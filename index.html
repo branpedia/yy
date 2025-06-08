@@ -292,7 +292,20 @@
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 0;
+            padding-top: 100%; /* Maintains 1:1 aspect ratio */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
+
+        .product-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
             transition: var(--transition);
         }
@@ -477,6 +490,12 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (min-width: 1200px) {
+            .product-image {
+                padding-top: 75%; /* Adjust aspect ratio for larger screens if needed */
+            }
+        }
     </style>
 </head>
 <body>
@@ -570,7 +589,7 @@
                 <h2 class="page-title">Sewa Bot</h2>
                 <div class="products-grid" id="sewaProducts">
                     <div class="product-card">
-                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-image" style="background-image: url('https://files.catbox.moe/pegufd.jpg');"></div>
                         <div class="product-content">
                             <h3 class="product-title">Sewa Bot</h3>
                             <p class="product-duration">1 Bulan</p>
@@ -579,7 +598,7 @@
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-image" style="background-image: url('https://files.catbox.moe/pegufd.jpg');"></div>
                         <div class="product-content">
                             <h3 class="product-title">Sewa Bot</h3>
                             <p class="product-duration">2 Bulan</p>
@@ -588,7 +607,7 @@
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-image" style="background-image: url('https://files.catbox.moe/pegufd.jpg');"></div>
                         <div class="product-content">
                             <h3 class="product-title">Sewa Bot</h3>
                             <p class="product-duration">3 Bulan</p>
@@ -597,7 +616,7 @@
                         </div>
                     </div>
                     <div class="product-card">
-                        <img src="https://files.catbox.moe/15iur1.jpg" alt="Script Bot" class="product-image">
+                        <div class="product-image" style="background-image: url('https://files.catbox.moe/15iur1.jpg');"></div>
                         <div class="product-content">
                             <h3 class="product-title">Script Bot</h3>
                             <p class="product-duration">Bot WhatsApp</p>
