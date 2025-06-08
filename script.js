@@ -81,19 +81,19 @@ function switchMode(mode) {
         if (mode === 'multiplayer') {
             // Example: Adjust content for multiplayer mode
             if (title.textContent === 'Sewa Bot') {
-                img.src = 'https://files.catbox.moe/pegufd-multiplayer.jpg';
+                img.src = 'https://qu.ax/UKzvO.jpg';
                 duration.textContent = 'Multiplayer - ' + duration.textContent;
             } else {
-                img.src = 'https://files.catbox.moe/15iur1-multiplayer.jpg';
+                img.src = 'https://qu.ax/UKzvO.jpg';
                 duration.textContent = 'Multiplayer - ' + duration.textContent;
             }
         } else {
             // Revert to standard mode
             if (title.textContent.includes('Sewa Bot')) {
-                img.src = 'https://files.catbox.moe/pegufd.jpg';
+                img.src = 'https://qu.ax/UKzvO.jpg';
                 duration.textContent = duration.textContent.replace('Multiplayer - ', '');
             } else {
-                img.src = 'https://files.catbox.moe/15iur1.jpg';
+                img.src = 'https://qu.ax/UKzvO.jpg';
                 duration.textContent = duration.textContent.replace('Multiplayer - ', '');
             }
         }
