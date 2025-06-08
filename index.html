@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bran Pedia | Shiya MD, is a WhatsApp and Telegram bot that makes things easier for users with a wide selection of features.</title>
+    <meta name="description" content="Shiya MD, is a WhatsApp and Telegram bot that makes things easier for users with a wide selection of features.">
+    <meta name="keywords" content="Shiya MD, WhatsApp Bot, Telegram Bot, MD Assistant, Chatbot, Automated Bot">
+    <meta name="author" content="Bran Pedia">
+    <link rel="icon" href="https://files.catbox.moe/q8obfb.jpg" type="image/jpeg">
+    <meta property="og:title" content="Bran Pedia - Professional Bot Services">
+    <meta property="og:description" content="Shiya MD, is a WhatsApp and Telegram bot that makes things easier for users with a wide selection of features.">
+    <meta property="og:image" content="https://files.catbox.moe/q8obfb.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://branpedia.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary-color: #4a6bff;
+            --secondary-color: #f5f7ff;
+            --text-color: #333;
+            --light-text: #777;
+            --bg-color: #fff;
+            --card-bg: #fff;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #5d7aff;
+            --secondary-color: #1a1a2e;
+            --text-color: #f0f0f0;
+            --light-text: #b0b0b0;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --border-color: #333;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--card-bg);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link {
+            margin-left: 25px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 25px;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content Styles */
+        main {
+            margin-top: 80px;
+            padding: 30px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 5px solid var(--primary-color);
+        }
+
+        .profile-name {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .profile-bio {
+            color: var(--light-text);
+            margin-bottom: 20px;
+        }
+
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background-color: var(--secondary-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--light-text);
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+        }
+
+        /* Main Links */
+        .main-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .link-card {
+            display: flex;
+            align-items: center;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-icon {
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+
+        .link-content {
+            flex: 1;
+        }
+
+        .link-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .link-subtitle {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .link-arrow {
+            color: var(--light-text);
+        }
+
+        /* Sewa Section */
+        .page-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .product-duration {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Jasa Section */
+        .services-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .service-desc {
+            color: var(--light-text);
+        }
+
+        .info-box {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .info-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .info-list {
+            list-style-type: none;
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-item::before {
+            content: "•";
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: var(--card-bg);
+            margin-top: 50px;
+        }
+
+        .footer-text {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .privacy-link {
+            color: var(--primary-color);
+        }
+
+        /* Loading */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--primary-color);
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background-color: var(--card-bg);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                transition: var(--transition);
+                box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-link {
+                margin: 15px 0;
+            }
+            
+            .theme-toggle {
+                margin: 15px 0 0;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .main-links, .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading State -->
+    <div class="loading" style="opacity: 0; display: none;">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo" id="siteTitle">
+                <i class="fas fa-robot logo-icon"></i>
+                <span>Bran Pedia</span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#" class="nav-link">Home</a>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+            
+            <button class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero">
+            <div class="profile-card">
+                <img src="https://files.catbox.moe/lj36vq.jpg" alt="Profile Picture" class="profile-pic" id="profilePic">
+                <h1 class="profile-name" id="profileName">Bran Pedia</h1>
+                <p class="profile-bio" id="profileBio">Imagine, Create, Achieve.</p>
+                
+                <div class="profile-tags" id="profileTags">
+                    <span class="tag">Ngoding</span>
+                    <span class="tag">Copas</span>
+                    <span class="tag">Game</span>
+                    <span class="tag">Music</span>
+                </div>
+                
+                <div class="social-links" id="socialLinks">
+                    <a href="https://youtube.com/@branpedia" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="https://wa.me/6285795600265?text=Hai" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://instagram.com/bran_pedia" class="social-icon" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <!-- Main Links -->
+            <div class="container">
+                <h2 class="page-title">Links</h2>
+                <div class="main-links" id="mainLinks">
+                    <a href="https://branpediapanel.vercel.app" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <span class="link-icon">🌐</span>
+                        <div class="link-content">
+                            <h3 class="link-title">Personal Website</h3>
+                            <p class="link-subtitle">Buy Pane Disini</p>
+                        </div>
+                        <span class="link-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="https://wa.me/6283896757956?text=.menu" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <span class="link-icon">👾</span>
+                        <div class="link-content">
+                            <h3 class="link-title">Bran Pedia</h3>
+                            <p class="link-subtitle">Bukan sekadar bot WhatsApp, Bran punya segalanya buat lu!</p>
+                        </div>
+                        <span class="link-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="https://discord.gg/2ahZre6T" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <span class="link-icon">👾</span>
+                        <div class="link-content">
+                            <h3 class="link-title">Bran Pedia</h3>
+                            <p class="link-subtitle">Lu butuh bot all-in-one? Bran bot Telegram jawabannya!</p>
+                        </div>
+                        <span class="link-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                    <a href="https://whatsapp.com/channel/0029VaR0ejN47Xe26WUarL3H" class="link-card" target="_blank" rel="noopener noreferrer">
+                        <span class="link-icon">💬</span>
+                        <div class="link-content">
+                            <h3 class="link-title">Saluran Bran Pedia</h3>
+                            <p class="link-subtitle">Dapatkan informasi disini</p>
+                        </div>
+                        <span class="link-arrow"><i class="fas fa-chevron-right"></i></span>
+                    </a>
+                </div>
+                
+                <!-- SewaBot Section -->
+                <h2 class="page-title">Sewa Bot</h2>
+                <div class="products-grid" id="sewaProducts">
+                    <div class="product-card">
+                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Sewa Bot</h3>
+                            <p class="product-duration">1 Bulan</p>
+                            <p class="product-price">Rp 8.000</p>
+                            <a href="https://wa.me/6285795600265?text=kak_Sewabot_1bulan_8.000" class="btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Sewa Bot</h3>
+                            <p class="product-duration">2 Bulan</p>
+                            <p class="product-price">Rp 18.000</p>
+                            <a href="https://wa.me/6285795600265?text=kak_Sewabot_2bulan_18.000" class="btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://files.catbox.moe/pegufd.jpg" alt="Sewa Bot" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Sewa Bot</h3>
+                            <p class="product-duration">3 Bulan</p>
+                            <p class="product-price">Rp 24.000</p>
+                            <a href="https://wa.me/6285795600265?text=kak_Sewabot_3bulan_24.000" class="btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://files.catbox.moe/15iur1.jpg" alt="Script Bot" class="product-image">
+                        <div class="product-content">
+                            <h3 class="product-title">Script Bot</h3>
+                            <p class="product-duration">Bot WhatsApp</p>
+                            <p class="product-price">Rp 40.000</p>
+                            <a href="https://wa.me/p/28159551530325907/6285795600265" class="btn" target="_blank" rel="noopener noreferrer">Buy Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Jasaku Section -->
+                <h2 class="page-title">Layanan Jasa</h2>
+                <div class="services-list">
+                    <div id="jasaServices">
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima pembuatan script bot</h3>
+                            <p class="service-desc">Buat bot sesuai kebutuhan Anda.</p>
+                        </div>
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima perbaikan script atau fitur bot</h3>
+                            <p class="service-desc">Perbaiki bug atau tambahkan fitur baru.</p>
+                        </div>
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima pembuatan fitur bot</h3>
+                            <p class="service-desc">Tambahkan fitur khusus ke bot Anda.</p>
+                        </div>
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima semua kebutuhan bot</h3>
+                            <p class="service-desc">Solusi lengkap untuk kebutuhan bot Anda.</p>
+                        </div>
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima jasa install panel (Ptero)</h3>
+                            <p class="service-desc">Instalasi dan konfigurasi panel Pterodactyl.</p>
+                        </div>
+                        <div class="service-item">
+                            <h3 class="service-title">Menerima Jadi Bot</h3>
+                            <p class="service-desc">Jadikan bot Anda siap pakai.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-box">
+                        <h3 class="info-title">ℹ️ Informasi</h3>
+                        <ul class="info-list" id="jasaInfo">
+                            <li class="info-item">Pembayaran bisa dicicil</li>
+                            <li class="info-item">Bisa bayar di awal atau akhir</li>
+                            <li class="info-item">Pembayaran melalui QRIS Only</li>
+                            <li class="info-item">Testimoni Banyak</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text" id="footerText">
+                © 2025 Bran Pedia. Jangan copas, bikin sendiri | <a href="https://discord.gg/2ahZre6T" class="privacy-link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Wait for DOM to load
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the page
+            initializePage();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Hide loading screen after 1 second
+            setTimeout(() => {
+                const loading = document.querySelector('.loading');
+                loading.style.opacity = '0';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Initialize page
+        function initializePage() {
+            // Check for saved theme preference
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.querySelector('.theme-toggle i').classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            // Nav toggle for mobile
+            document.getElementById('navToggle').addEventListener('click', function() {
+                document.getElementById('navMenu').classList.toggle('active');
+            });
+            
+            // Theme toggle
+            document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+            
+            // Home link (optional, prevents default behavior)
+            document.querySelector('.nav-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo(0, 0);
+            });
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const themeToggle = document.querySelector('.theme-toggle i');
+            
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggle.classList.replace('fa-sun', 'fa-moon');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>
